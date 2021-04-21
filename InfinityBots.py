@@ -23,6 +23,12 @@ JEBotZ = Client(
    bot_token=Config.TG_BOT_TOKEN,
 )
 
+# start bot
+@JEBotZ.on_message(filters.command("start"))
+async def start(client, message):
+    await message.reply("Hello there, I'm Url Uploader bot!")
+
+# url upload
 @JEBotZ.on_message(filters.command("url") & filters.edited)
 async def urlupload(client, message):
     url = message.text.split(None, 1)[1]
@@ -37,5 +43,5 @@ async def urlupload(client, message):
 
 print("JEBotZ Started!")
 
-# start bot
+# run bot
 JEBotZ.run()
