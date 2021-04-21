@@ -34,7 +34,6 @@ async def start(client, message):
 async def urlupload(client, message: Message):
     url = message
     sed = await message.reply("Checking Url 🧐")
-    else: 
        try: # url download via wget to server
           lel = wget.download(url)
           await sed.edit("Uploading File 📤")
