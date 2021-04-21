@@ -25,7 +25,7 @@ JEBotZ = Client(
 )
 
 # start bot
-@JEBotZ.on_message(filters.command("start") & ~filters.edited)
+@JEBotZ.on_message(filters.command("start") & ~filters.edited & ~filters.command("start"))
 async def start(client, message):
     await message.reply("Hello there, I'm Url Uploader bot!")
 
