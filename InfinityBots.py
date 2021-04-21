@@ -9,11 +9,10 @@
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
 #    General Public License for more details.
 
-
 import os
 import wget
 from pyrogram import filters, Client
-from pyrogram.types import Message
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from config import Config
 
 # login to pyrogram client
@@ -27,8 +26,11 @@ JEBotZ = Client(
 # start bot
 @JEBotZ.on_message(filters.command("start") & ~filters.edited)
 async def start(client, message):
-    await message.reply("Hello there, I'm Url Uploader bot!")
-
+    await message.reply("Hello there, I'm Url Uploader bot!",
+                        reply_markup=InlineKeyboardMarkup(
+                                    [[InlineKeyboardButton("Source", url="https://github.com/ImJanindu/UrlUploaderBot"),
+                                      InlineKeyboardButton("Dev", url="https://t.me/ImJanindu)]])
+                       
 # url upload
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
 async def urlupload(client, message: Message):
