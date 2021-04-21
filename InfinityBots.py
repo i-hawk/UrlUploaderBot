@@ -29,7 +29,7 @@ async def start(client, message):
     await message.reply("Hello there, I'm Url Uploader bot!\n\nJust send me a url.",
                         reply_markup=InlineKeyboardMarkup(
                                     [[InlineKeyboardButton("Source", url="https://github.com/ImJanindu/UrlUploaderBot"),
-                                      InlineKeyboardButton("Dev", url="https://t.me/ImJanindu)]])
+                                      InlineKeyboardButton("Dev", url="https://t.me/ImJanindu)]]))
                        
 # url upload
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
