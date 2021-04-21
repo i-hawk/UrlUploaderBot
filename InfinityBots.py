@@ -37,7 +37,7 @@ async def start(client, message):
                             ),)
 
 # help message
-@JEBotz.on_message(filters.command("help") & ~filters.edited)
+@JEBotZ.on_message(filters.command("help") & ~filters.edited)
 async def help(client, message: Message):
     await message.reply("Just send me a Url to upload it as a file.\n\n- Some Urls not supported due to algorithm changes. Make sure your Url not contain charactors like `%` / `@` etc. because bot algorithm not support that charactors.") 
 
