@@ -33,8 +33,9 @@ async def start(client, message):
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
 async def urlupload(client, message: Message):
     sed = await message.reply("Checking Url 🧐")
+    url = message.text
        try: # url download via wget to server
-          lel = wget.download(message)
+          lel = wget.download(url)
           await sed.edit("Uploading File 📤")
           await message.reply_document(lel) # upload downloaded file
           await sed.delete()
