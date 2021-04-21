@@ -26,7 +26,7 @@ JEBotZ = Client(
 # start message
 @JEBotZ.on_message(filters.command("start") & ~filters.edited)
 async def start(client, message):
-    await message.reply("Hello There, I'm Url Uploader Bot 😉\n\nJust Send Me A Url. Do /help for more details 🧐",
+    await message.reply("Hello There, I'm **Url Uploader Bot** 😉\n\nJust Send Me A Url. Do /help for more details 🧐",
                         reply_markup=InlineKeyboardMarkup(
                                 [[
                                         InlineKeyboardButton(
