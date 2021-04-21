@@ -37,10 +37,10 @@ async def urlupload(client, message: Message):
     try: # url download via wget
        lel = wget.download(url)
        await message.reply_document(lel)
-       sed.delete()
+       await sed.delete()
+       os.remove(lel) # remove downloaded file from server
     except Exception: # print error
-        sed.edit("Unsupported Url 🙄")
-    os.remove(lel) # remove downloaded file from server
+       await sed.edit("Unsupported Url 🙄")
 
 print("JEBotZ Started!")
 
