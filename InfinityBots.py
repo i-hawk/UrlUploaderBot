@@ -23,10 +23,10 @@ JEBotZ = Client(
    bot_token=Config.TG_BOT_TOKEN,
 )
 
-# start bot
+# start message
 @JEBotZ.on_message(filters.command("start") & ~filters.edited)
 async def start(client, message):
-    await message.reply("Hello There, I'm Url Uploader Bot!\n\nJust Send Me A Url.",
+    await message.reply("Hello There, I'm Url Uploader Bot!\n\nJust Send Me A Url. Do /help for more details.",
                         reply_markup=InlineKeyboardMarkup(
                                 [[
                                         InlineKeyboardButton(
@@ -35,6 +35,11 @@ async def start(client, message):
                                             "Dev", url="https://t.me/Infinity_BOTs")
                                     ]]
                             ),)
+
+# help message
+@JEBotz.on_message(filters.command("help") & ~filters.edited)
+async def help(client, message: Message):
+    await message.reply("Just send me a Url to upload it as a file.\n\n- Some Urls not supported due to algorithm changes. Make sure your Url not contain charactors like `%` / `@` etc. because bot algorithm not support that charactors.") 
 
 # url upload
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
