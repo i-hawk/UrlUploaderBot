@@ -46,8 +46,9 @@ async def urlupload(client, message: Message):
     try: # url download via wget to server
        lel = wget.download(url)
        thumb = wget.download(thurl)
+       pak = "a23b8f38fde1914a4bbe9.jpg"
        await sed.edit("Uploading File 🚶‍♂")
-       await message.reply_document(lel, caption=cap, thumb=thumb) # upload downloaded file
+       await message.reply_document(lel, caption=cap, thumb=pak) # upload downloaded file
        await sed.delete()
        os.remove(lel) # remove downloaded file from server
     except Exception:
