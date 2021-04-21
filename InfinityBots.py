@@ -26,15 +26,20 @@ JEBotZ = Client(
 # start bot
 @JEBotZ.on_message(filters.command("start") & ~filters.edited)
 async def start(client, message):
-    await message.reply("Hello there, I'm Url Uploader bot!\n\nJust send me a url.",
+    await message.reply("Hello There, I'm Url Uploader Bot!\n\nJust Send Me A Url.",
                         reply_markup=InlineKeyboardMarkup(
-                                    [[InlineKeyboardButton("Source", url="https://github.com/ImJanindu/UrlUploaderBot"),
-                                      InlineKeyboardButton("Dev", url="https://t.me/ImJanindu)]]))
-                       
+                                [[
+                                        InlineKeyboardButton(
+                                            "Source", url="https://github.com/ImJanindu/UrlUploaderBot"),
+                                        InlineKeyboardButton(
+                                            "Dev", url="https://t.me/Infinity_BOTs")
+                                    ]]
+                            ),)
+
 # url upload
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
 async def urlupload(client, message: Message):
-    sed = await message.reply("Checking Url 🧐")
+    sed = await message.reply("Trying To Download Url 🧐")
     url = message.text
     try: # url download via wget to server
        lel = wget.download(url)
