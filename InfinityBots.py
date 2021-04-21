@@ -44,7 +44,8 @@ async def urlupload(client, message: Message):
        except Exception:
           await sed.edit("Unsupported Url 😐") # print error
 
-print("JEBotZ Started!")
 
 # run bot
 JEBotZ.run()
+
+print("JEBotZ Started!")
