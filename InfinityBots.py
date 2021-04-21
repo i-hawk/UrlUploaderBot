@@ -51,6 +51,7 @@ async def urlupload(client, message: Message):
        await message.reply_document(lel, caption=cap, thumb=pak) # upload downloaded file
        await sed.delete()
        os.remove(lel) # remove downloaded file from server
+       os.remove(thumb) # remove thumbnail file from server
     except Exception:
        await sed.edit("Unsupported Url 😐") # print error
 
