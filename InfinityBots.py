@@ -32,10 +32,9 @@ async def start(client, message):
 # url upload
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
 async def urlupload(client, message: Message):
-    url = message
     sed = await message.reply("Checking Url 🧐")
        try: # url download via wget to server
-          lel = wget.download(url)
+          lel = wget.download(message)
           await sed.edit("Uploading File 📤")
           await message.reply_document(lel) # upload downloaded file
           await sed.delete()
@@ -44,7 +43,7 @@ async def urlupload(client, message: Message):
           await sed.edit("Unsupported Url 😐") # print error
 
 
+print("JEBotZ Started!")
+
 # run bot
 JEBotZ.run()
-
-print("JEBotZ Started!")
