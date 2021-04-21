@@ -25,16 +25,16 @@ JEBotZ = Client(
 )
 
 # start bot
-@JEBotZ.on_message(filters.command("start") & ~filters.edited & ~filters.command("start"))
+@JEBotZ.on_message(filters.command("start") & ~filters.edited)
 async def start(client, message):
     await message.reply("Hello there, I'm Url Uploader bot!")
 
 # url upload
-@JEBotZ.on_message(filters.text & ~filters.edited)
+@JEBotZ.on_message(filters.text & ~filters.edited & ~filters.command("start"))
 async def urlupload(client, message: Message):
     url = message
     sed = await message.reply("Checking Url 🧐")
-    if "https://" or "." not in url: # checking url
+    if "https://" or "." not in message: # checking url
         await sed.edit("Is this a Url 🙄")
     else: 
        try: # url download via wget to server
