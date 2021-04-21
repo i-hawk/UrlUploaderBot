@@ -32,7 +32,7 @@ async def start(client, message):
 # url upload
 @JEBotZ.on_message(filters.text & ~filters.edited)
 async def urlupload(client, message: Message):
-    url = message.text
+    url = message
     sed = await message.reply("Checking Url 🧐")
     if "https://" or "." not in url: # checking url
         await sed.edit("Is this a Url 🙄")
