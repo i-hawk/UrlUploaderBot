@@ -42,10 +42,12 @@ async def urlupload(client, message: Message):
     sed = await message.reply("Trying To Download Url 🧐")
     url = message.text
     cap = "@JEBotZ"
+    thurl = "https://telegra.ph/file/a23b8f38fde1914a4bbe9.jpg"
     try: # url download via wget to server
        lel = wget.download(url)
-       await sed.edit("Uploading File 💤")
-       await message.reply_document(lel, caption=cap) # upload downloaded file
+       thumb = wget.download(thurl)
+       await sed.edit("Uploading File 🚶‍♂")
+       await message.reply_document(lel, caption=cap, thumb=thumb) # upload downloaded file
        await sed.delete()
        os.remove(lel) # remove downloaded file from server
     except Exception:
