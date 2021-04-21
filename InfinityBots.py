@@ -34,14 +34,17 @@ async def start(client, message):
 async def urlupload(client, message: Message):
     url = message.text.split(None, 1)[1]
     sed = await message.reply("Checking Url 🧐")
-    try: # url download via wget
-       lel = wget.download(url)
-       await sed.edit("Uploading File...")
-       await message.reply_document(lel)
-       await sed.delete()
-       os.remove(lel) # remove downloaded file from server
-    except Exception: # print error
-       await sed.edit("Unsupported Url 🙄")
+    if "https://" not in url:
+        await sed.edit("Is this a Url 🙄")
+    else: 
+       try: # url download via wget
+          lel = wget.download(url)
+          await sed.edit("Uploading File...")
+          await message.reply_document(lel)
+          await sed.delete()
+          os.remove(lel) # remove downloaded file from server
+       except Exception: # print error
+          await sed.edit("Unsupported Url 😐")
 
 print("JEBotZ Started!")
 
