@@ -13,6 +13,7 @@
 import os
 import wget
 from pyrogram import filters, Client
+from pyrogram.types import Message
 from config import Config
 
 # login to pyrogram client
@@ -29,8 +30,8 @@ async def start(client, message):
     await message.reply("Hello there, I'm Url Uploader bot!")
 
 # url upload
-@JEBotZ.on_message(filters.command("url") & filters.edited)
-async def urlupload(client, message):
+@JEBotZ.on_message(filters.command("url"))
+async def urlupload(client, message: Message):
     url = message.text.split(None, 1)[1]
     sed = await message.reply("Checking Url 🧐")
     try: # url download via wget
