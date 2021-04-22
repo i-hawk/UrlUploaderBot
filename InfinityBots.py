@@ -39,7 +39,7 @@ async def start(client, message):
 # help message
 @JEBotZ.on_message(filters.command("help") & ~filters.edited)
 async def help(client, message: Message):
-    await message.reply("**Just send me a Url** to upload it as a file.\n\n**NOTE** - Some Urls not supported due to algorithm changes. Make sure your Url not contain charactors like `%`, `@`, etc... and have file extention at the end of Url (better)\n\nEg: `https://transfer.sh/e3kk6/video.mp4`") 
+    await message.reply("**Just send me a Url** to upload it as a file.\n\n**NOTE** - Some Urls not supported due to algorithm changes. Make sure your Url not contain charactors like `%`, `@`, etc... and have file extention at the end of Url (better)\n\nEg: `https://telegra.ph/file/28f9af96b75ed6d513fc9.jpg`") 
 
 # url upload
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
