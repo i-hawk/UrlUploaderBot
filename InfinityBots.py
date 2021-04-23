@@ -60,19 +60,18 @@ async def urlupload(bot, message: Message):
             return
         except Exception:
             await bot.edit_message_text(chat_id=update.chat.id, text="Something went wrong 😐", message_id=msg.message_id)
-            return  
-     else:                      
-            try: # url download via wget to server
-                lel = wget.download(url)
-                thumb = wget.download(thurl)
-                pak = "a23b8f38fde1914a4bbe9.jpg"
-                await msg.edit("Uploading File 🚶‍♂")
-                await message.reply_document(lel, caption=cap, thumb=pak) # upload downloaded file
-                await msg.delete()
-                os.remove(lel) # remove downloaded file from server
-                os.remove(thumb) # remove thumbnail file from server
-            except Exception:
-                await msg.edit("Unsupported Url 😐") # print error
+            return                     
+    try: # url download via wget to server
+         lel = wget.download(url)
+         thumb = wget.download(thurl)
+         pak = "a23b8f38fde1914a4bbe9.jpg"
+         await msg.edit("Uploading File 🚶‍♂")
+         await message.reply_document(lel, caption=cap, thumb=pak) # upload downloaded file
+         await msg.delete()
+         os.remove(lel) # remove downloaded file from server
+         os.remove(thumb) # remove thumbnail file from server
+    except Exception:
+        await msg.edit("Unsupported Url 😐") # print error
 
 
 print("JEBotZ Started!")
