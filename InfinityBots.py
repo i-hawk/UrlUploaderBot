@@ -70,7 +70,7 @@ async def urlupload(bot, message: Message):
                 await sed.delete()
                 os.remove(lel) # remove downloaded file from server
                 os.remove(thumb) # remove thumbnail file from server
-             except Exception:
+            except Exception:
                 await sed.edit("Unsupported Url 😐") # print error
 
 
