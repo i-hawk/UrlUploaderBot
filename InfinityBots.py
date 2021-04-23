@@ -12,6 +12,7 @@
 import os
 import wget
 from pyrogram import filters, Client
+from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from config import Config
 
@@ -43,7 +44,19 @@ async def help(client, message: Message):
 
 # url upload
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
-async def urlupload(client, message: Message):
+async def urlupload(client: Client, message: Message):
+    if Config.UPDATE_CHANNEL:
+        try:
+            user = await client.get_chat_member(Config.UPDATE_CHANNEL, update.chat.id)
+            if user.status == "kicked":
+              thik = await message.reply("You are banned 😕")
+              return
+        except UserNotParticipant:
+            await thik.edit("Join our channel to use me 😉", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Join Channel", url=f"https://t.me/{Config.UPDATE_CHANNEL}")]]))
+            return
+        except Exception:
+            await thik.edit("Something went wrong 😐")
+            return
     sed = await message.reply("Trying To Download Url 🧐")
     url = message.text
     cap = "@JEBotZ"
