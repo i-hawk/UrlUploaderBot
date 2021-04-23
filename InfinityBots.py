@@ -53,7 +53,6 @@ async def urlupload(client, message: Message):
     chat_u = Config.UPDATE_CHANNEL #channel for force sub
     if chat_u:
        user_id = message.from_user.id
-    if not client.get_chat_member(chat_id, user_id).status in ("administrator", "creator"):
        channel = chat_u
        try:
          client.get_chat_member(channel, user_id)
