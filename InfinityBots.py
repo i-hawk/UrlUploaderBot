@@ -57,14 +57,11 @@ async def urlupload(client, message: Message):
        try:
          client.get_chat_member(channel, user_id)
        except UserNotParticipant:
-         try:
-              chat_u = chat_u.replace('@','')
-              tauk = message.from_user.mention
-              sent_message = message.reply_text(
-                "Lel",
-                disable_web_page_preview=True)  
-         except Exception:
-            await msg.edit("Sed 😐")                   
+         await msg.edit("lel")  
+         return
+       except Exception:
+         await msg.edit("Sed 😐") 
+         return                  
     try: # url download via wget to server
          lel = wget.download(url)
          thumb = wget.download(thurl)
