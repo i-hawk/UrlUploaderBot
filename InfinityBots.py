@@ -51,12 +51,12 @@ async def urlupload(bot, message: Message):
     thurl = "https://telegra.ph/file/a23b8f38fde1914a4bbe9.jpg"
     if Config.UPDATE_CHANNEL:
         try:
-            user = await bot.get_chat_member(Config.UPDATE_CHANNEL, message.chat.id)
+            user = await bot.get_chat_member(Config.UPDATE_CHANNEL)
             if user.status == "kicked":
               await msg.edit("You are banned 😕")
               return
         except UserNotParticipant:
-            await msg.edit("Join our channel to use me 😉", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Join Channel", url=f"https://t.me/{Config.UPDATE_CHANNEL}")]]))
+            await msg.edit("Join our channel to use me 😉", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url=f"https://t.me/{Config.UPDATE_CHANNEL}")]]))
             return
         except Exception:
             await msg.edit("Something went wrong 😐")
