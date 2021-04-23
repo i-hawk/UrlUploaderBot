@@ -61,17 +61,17 @@ async def urlupload(bot, message: Message):
             url = message.text
             cap = "@JEBotZ"
             thurl = "https://telegra.ph/file/a23b8f38fde1914a4bbe9.jpg"
-              try: # url download via wget to server
-                 lel = wget.download(url)
-                 thumb = wget.download(thurl)
-                 pak = "a23b8f38fde1914a4bbe9.jpg"
-                 await sed.edit("Uploading File 🚶‍♂")
-                 await message.reply_document(lel, caption=cap, thumb=pak) # upload downloaded file
-                 await sed.delete()
-                 os.remove(lel) # remove downloaded file from server
-                 os.remove(thumb) # remove thumbnail file from server
-              except Exception:
-                 await sed.edit("Unsupported Url 😐") # print error
+            try: # url download via wget to server
+                lel = wget.download(url)
+                thumb = wget.download(thurl)
+                pak = "a23b8f38fde1914a4bbe9.jpg"
+                await sed.edit("Uploading File 🚶‍♂")
+                await message.reply_document(lel, caption=cap, thumb=pak) # upload downloaded file
+                await sed.delete()
+                os.remove(lel) # remove downloaded file from server
+                os.remove(thumb) # remove thumbnail file from server
+             except Exception:
+                await sed.edit("Unsupported Url 😐") # print error
 
 
 print("JEBotZ Started!")
