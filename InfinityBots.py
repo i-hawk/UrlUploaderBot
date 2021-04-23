@@ -49,18 +49,23 @@ async def urlupload(bot, message: Message):
     url = message.text
     cap = "@JEBotZ"
     thurl = "https://telegra.ph/file/a23b8f38fde1914a4bbe9.jpg"
-    if Config.UPDATE_CHANNEL:
-        try:
-            user = await bot.get_chat_member(Config.UPDATE_CHANNEL)
-            if user.status == "kicked":
-              await msg.edit("You are banned 😕")
-              return
-        except UserNotParticipant:
-            await msg.edit("Join our channel to use me 😉")
-            return
-        except Exception:
-            await msg.edit("Something went wrong 😐")
-            return                     
+    chat_id = message.chat.id
+    chat_u = Config.UPDATE_CHANNEL #channel for force sub
+    if chat_u:
+       user_id = message.from_user.id
+    if not client.get_chat_member(chat_id, user_id).status in ("administrator", "creator"):
+       channel = chat_u
+       try:
+         client.get_chat_member(channel, user_id)
+       except UserNotParticipant:
+         try:
+              chat_u = chat_u.replace('@','')
+              tauk = message.from_user.mention
+              sent_message = message.reply_text(
+                "Lel",
+                disable_web_page_preview=True)  
+         except Exception:
+            await msg.edit("Sed 😐")                   
     try: # url download via wget to server
          lel = wget.download(url)
          thumb = wget.download(thurl)
