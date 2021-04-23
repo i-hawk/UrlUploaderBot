@@ -56,7 +56,7 @@ async def urlupload(bot, message: Message):
               await msg.edit("You are banned 😕")
               return
         except UserNotParticipant:
-            await msg.edit("Join our channel to use me 😉", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url=f"https://t.me/{Config.UPDATE_CHANNEL}")]]))
+            await msg.edit("Join our channel to use me 😉")
             return
         except Exception:
             await msg.edit("Something went wrong 😐")
