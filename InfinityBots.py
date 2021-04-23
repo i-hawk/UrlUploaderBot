@@ -51,7 +51,7 @@ async def urlupload(bot, message: Message):
     thurl = "https://telegra.ph/file/a23b8f38fde1914a4bbe9.jpg"
     if Config.UPDATE_CHANNEL:
         try:
-            user = await bot.get_chat_member(Config.UPDATE_CHANNEL, update.chat.id)
+            user = await bot.get_chat_member(Config.UPDATE_CHANNEL, message.chat.id)
             if user.status == "kicked":
               await bot.edit_message_text(text="You are banned 😕", message_id=msg.message_id)
               return
