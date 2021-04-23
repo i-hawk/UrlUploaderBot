@@ -53,13 +53,13 @@ async def urlupload(bot, message: Message):
         try:
             user = await bot.get_chat_member(Config.UPDATE_CHANNEL, message.chat.id)
             if user.status == "kicked":
-              await bot.edit_message_text(text="You are banned 😕", message_id=msg.message_id)
+              await msg.edit("You are banned 😕")
               return
         except UserNotParticipant:
-            await bot.edit_message_text(chat_id=message.chat.id, text="**Join our channel to use me 😉**", message_id=msg.message_id, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Join Channel", url=f"https://t.me/{Config.UPDATE_CHANNEL}")]]))
+            await msg.edit("Join our channel to use me 😉", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Join Channel", url=f"https://t.me/{Config.UPDATE_CHANNEL}")]]))
             return
         except Exception:
-            await bot.edit_message_text(chat_id=message.chat.id, text="Something went wrong 😐", message_id=msg.message_id)
+            await msg.edit("Something went wrong 😐")
             return                     
     try: # url download via wget to server
          lel = wget.download(url)
