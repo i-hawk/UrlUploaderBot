@@ -44,23 +44,23 @@ async def help(client, message: Message):
 
 # url upload
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
-async def urlupload(client, message: Message):
+async def urlupload(bot, message: Message):
+    msg = await message.reply_text(text="Checking Url 🧐", quote=True)
+    url = message.text
+    cap = "@JEBotZ"
+    thurl = "https://telegra.ph/file/a23b8f38fde1914a4bbe9.jpg"
     if Config.UPDATE_CHANNEL:
         try:
-            user = await JEBotZ.get_chat_member(Config.UPDATE_CHANNEL, update.chat.id)
+            user = await bot.get_chat_member(Config.UPDATE_CHANNEL, update.chat.id)
             if user.status == "kicked":
-              thik = await message.reply("You are banned 😕")
+              await bot.edit_message_text(text="You are banned 😕", message_id=msg.message_id)
               return
         except UserNotParticipant:
-            await thik.edit("Join our channel to use me 😉", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Join Channel", url=f"https://t.me/{Config.UPDATE_CHANNEL}")]]))
+            await bot.edit_message_text(chat_id=update.chat.id, text="Join our channel to use me!", message_id=msg.message_id, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Join Channel", url=f"https://t.me/{Config.UPDATE_CHANNEL}")]]))
             return
         except Exception:
-            await thik.edit("Something went wrong 😐")
-            return
-            sed = await message.reply("Trying To Download Url 🧐")
-            url = message.text
-            cap = "@JEBotZ"
-            thurl = "https://telegra.ph/file/a23b8f38fde1914a4bbe9.jpg"
+            await bot.edit_message_text(chat_id=update.chat.id, text="Something went wrong 😐", message_id=msg.message_id)
+            return                        
             try: # url download via wget to server
                 lel = wget.download(url)
                 thumb = wget.download(thurl)
