@@ -48,21 +48,9 @@ async def urlupload(client, message: Message):
     msg = await message.reply_text(text="Checking Url 🧐", quote=True)
     url = message.text
     cap = "@JEBotZ"
-    thurl = "https://telegra.ph/file/a23b8f38fde1914a4bbe9.jpg"
-    chat_id = message.chat.id
-    chat_u = Config.UPDATE_CHANNEL #channel for force sub
-    if chat_u:
-       user_id = message.from_user.id
-       channel = chat_u
-       try:
-         client.get_chat_member(channel, user_id)
-       except UserNotParticipant:
-         await msg.edit("lel")  
-         return
-       except Exception:
-         await msg.edit("Sed 😐") 
-         return                  
+    thurl = "https://telegra.ph/file/a23b8f38fde1914a4bbe9.jpg"                  
     try: # url download via wget to server
+         await msg.edit("Trying to download 😉")
          lel = wget.download(url)
          thumb = wget.download(thurl)
          pak = "a23b8f38fde1914a4bbe9.jpg"
