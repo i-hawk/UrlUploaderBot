@@ -27,7 +27,7 @@ JEBotZ = Client(
 # start message
 @JEBotZ.on_message(filters.command("start") & ~filters.edited)
 async def start(client, message):
-    await message.reply("Hello There, I'm **Url Uploader Bot** 😉\n\nJust Send Me A Url. Do /help for more details 🧐",
+    await message.reply("Hello There, I'm **Url Uploader Bot** 😉\n\nJust send me a url. Do /help for more details 🧐",
                         reply_markup=InlineKeyboardMarkup(
                                 [[
                                         InlineKeyboardButton(
@@ -40,7 +40,7 @@ async def start(client, message):
 # help message
 @JEBotZ.on_message(filters.command("help") & ~filters.edited)
 async def help(client, message: Message):
-    await message.reply("**Just send me a Url** to upload it as a file.\n\n**NOTE** - Some Urls not supported due to algorithm changes. Make sure your Url not contain charactors like `%`, `@`, etc... and have file extention at the end of Url (better)\n\nEg: `https://telegra.ph/file/28f9af96b75ed6d513fc9.jpg`") 
+    await message.reply("**Just send me a url** to upload it as a file.\n\n**NOTE:** Some urls are unsupported, if I said `Unsupported Url 😐` try to transload your url via @HK_Transloader_BOT and send transloaded url to me.") 
 
 # url upload
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
