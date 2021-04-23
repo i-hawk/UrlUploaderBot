@@ -44,7 +44,7 @@ async def help(client, message: Message):
 
 # url upload
 @JEBotZ.on_message(filters.regex(pattern=".*http.*") & ~filters.edited)
-async def urlupload(bot, message: Message):
+async def urlupload(client, message: Message):
     msg = await message.reply_text(text="Checking Url 🧐", quote=True)
     url = message.text
     cap = "@JEBotZ"
