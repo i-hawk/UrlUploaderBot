@@ -12,7 +12,6 @@
 import os
 import wget
 from pyrogram import filters, Client
-from pyrogram.errors import UserNotParticipant, UserBannedInChannel
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from config import Config
 
